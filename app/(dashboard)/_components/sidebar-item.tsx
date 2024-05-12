@@ -1,5 +1,9 @@
+"use client";
+
+import { cn } from '@/lib/utils';
 import { LucideIcon } from 'lucide-react';
-import React from 'react'; // Make sure to import React
+import { usePathname, useRouter } from 'next/navigation';
+import React from 'react';
 
 interface SidebarItemProps {
   icon: LucideIcon;
@@ -7,12 +11,42 @@ interface SidebarItemProps {
   href: string;
 }
 
-const SidebarItem: React.FC<SidebarItemProps> = ({ icon, label, href }) => {
+const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, label, href }) => {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const isActive =
+    pathname === '/' && href === '/' || // If we are on the root page
+    pathname === href || // For checking if we're on the exact same page
+    pathname?.startsWith(`${href}/`); // For specific cases where we can be in a subroute of a specific route
+
+  const onClick = () => {
+    router.push(href);
+  };
+
   return (
-    <div>
-      {/* Render your SidebarItem content here */}
-      {label} - {href}
-    </div>
+    <button
+      onClick={onClick}
+      type="button"
+      className={cn(
+        'flex items-center gap-x-2 text-black text-sm font-semibold pl-6 transition-all hover:text-gray-600 hover:bg-gray-300/20',
+        isActive && 'text-blue-700 bg-blue-200/20 hover:bg-blue-200/20 hover:text-blue-700'
+      )}
+    >
+      <div className="flex items-center gap-x-2 py-4">
+        <Icon
+          size={22}
+          className={cn('text-black', isActive && 'text-blue-700')}
+        />
+        {label}
+      </div>
+      <div
+        className={cn(
+          'ml-auto opacity-0 border-2 border-blue-700 h-full transition-all',
+          isActive && 'opacity-100'
+        )}
+      />
+    </button>
   );
 };
 
