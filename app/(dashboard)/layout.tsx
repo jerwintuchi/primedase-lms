@@ -1,5 +1,6 @@
 import { Navbar } from "./_components/navbar";
 import Sidebar from "./_components/sidebar";
+import "./avatarbox.css";
 
 const DashboardLayout = ({children} : {children : React.ReactNode}) => {
     return ( 

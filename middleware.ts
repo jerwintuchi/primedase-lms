@@ -3,13 +3,17 @@ import {
   createRouteMatcher
  } from "@clerk/nextjs/server";
 
+
  export default clerkMiddleware((auth, req) => {
-  if (isProtectedRoute(req)) auth().protect();
+  
+  if (isProtectedRoute(req)) {
+    auth().protect();
+  }
 });
 
 const isProtectedRoute = createRouteMatcher([
   '/',
-  '/forum(.*)', //make some pages for admin/teacher or student/customer
+  '/teacher/(.*)', //make some pages for admin/teacher or student/customer
 ]);
 
 

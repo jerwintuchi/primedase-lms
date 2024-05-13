@@ -1,0 +1,146 @@
+@tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+html,
+body,
+:root {
+  height: 100%;
+}
+
+/*------------------------------------------------- C L E R K CUSTOM STYLE--------------------------------------------*/
+
+
+/* the one behind the front card*/
+.cl-cardBox{
+    background-color: #770b3d;
+    padding-bottom: 10px;
+    border-radius: 45px 45px 0px 0px;
+  }
+  
+  .cl-card {
+    /* card container */
+    background-color: #FFA737;
+    border: 1px solid #DC851F;
+    border-radius: 40px 40px 0px 0px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .cl-main {
+    /* Your custom styles for the main container */
+    margin-top: 4px;
+  }
+  
+
+  /* HEADER TEXT STYLING */
+  
+  .cl-headerTitle {
+    /* header title */
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .cl-headerSubtitle {
+    /* header subtitle */
+    font-size: 14px;
+    color: #000000;
+  }
+  
+  
+  /* BUTTON STYLING */
+  .cl-socialButtonsBlockButton {
+    background-color: #7E5920;.cl-socialButtonsBlockButton {
+      
+      background-color: #FFA737;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .cl-socialButtonsBlockButton:hover {
+      background-color: #0056b3;
+    }
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .cl-socialButtonsBlockButton:hover {
+    background-color: #ff5e00;
+  }
+  
+  /* DIVIDER STYLING */
+  .cl-dividerLine {
+    /* divider line */
+    border-top: 1px solid #583404;
+  }
+  
+  .cl-dividerText {
+    /*  divider text */
+    font-size: 12px;
+    color: #7E5920;
+    margin: 0 10px;
+  }
+  
+  /* FORM FIELD STYLING */
+  .cl-formFieldLabel {
+    /* field label */
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .cl-formFieldInput {
+    /* field input */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+  }
+  
+  /* PRIMARY BUTTON STYLING */
+  .cl-formButtonPrimary {
+    /* button */
+    background-color: #770b3d;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .cl-formButtonPrimary:hover {
+    /*hover styles for the primary button */
+    background-color: #b108a8;
+  }
+
+  .cl-footer {
+    background-color: #bb276c;
+    /*border-radius: 0px 0px 20px 20px;*/
+  }
+ /* Hides the "Secured by Clerk" element */
+  .cl-internal-180wb59 {
+    display: none; /* for the initial loginpage */
+  }
+
+  .cl-internal-11ttlho {
+    display: none; /* for the userbutton */
+  }
+  
+  .cl-internal-lqfubk {
+    display: none; /* for the view account */
+  }
+
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
+  }
+
+  /*----------------------------------------------------------------END OF CLERK CUSTOMIZATION-----------------------------------*/

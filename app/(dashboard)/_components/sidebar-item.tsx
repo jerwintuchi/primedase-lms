@@ -29,20 +29,20 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, label, href }) =>
       onClick={onClick}
       type="button"
       className={cn(
-        'flex items-center gap-x-2 text-black text-sm font-semibold pl-6 transition-all hover:text-gray-600 hover:bg-gray-300/20',
-        isActive && 'text-blue-700 bg-blue-200/20 hover:bg-blue-200/20 hover:text-blue-700'
+        'flex items-center gap-x-2 text-black text-sm font-semibold pl-6 transition-all hover:text-black-600 hover:bg-gray-300/20',
+        isActive && 'text-purple-900 bg-purple-400 hover:bg-purple-200/20 hover:text-purple-700'
       )}
     >
       <div className="flex items-center gap-x-2 py-4">
         <Icon
           size={22}
-          className={cn('text-black', isActive && 'text-blue-700')}
+          className={cn('text-black', isActive && 'text-purple-800')}
         />
         {label}
       </div>
       <div
         className={cn(
-          'ml-auto opacity-0 border-2 border-blue-700 h-full transition-all',
+          'ml-auto opacity-0 border-2 border-purple-800 h-full transition-all',
           isActive && 'opacity-100'
         )}
       />
