@@ -7,6 +7,15 @@ body,
   height: 100%;
 }
 
+
+/* BACKGROUND FOR THE LANDING PAGE*/
+body {
+  background-image: url("/login-bg.svg");
+  background-repeat: no-repeat;  /* To prevent repeating the image */
+  background-position: center;  /* To center the image */
+  background-size: cover;       /* To cover the entire container */
+}
+
 .user-button-shadow {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow properties as desired */
   border-radius: 4px; /* Optional: Add border radius for a softer look */

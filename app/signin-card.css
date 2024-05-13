@@ -15,15 +15,16 @@ body,
     background-color: #770b3d;
     padding-bottom: 10px;
     border-radius: 45px 45px 0px 0px;
+    border: 3px solid #000000;
   }
   
   .cl-card {
     /* card container */
-    background-color: #FFA737;
-    border: 1px solid #DC851F;
+    background-color: #FDE047;
     border-radius: 40px 40px 0px 0px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     padding: 20px;
+    border: 2px solid #000000;
   }
   
   .cl-main {
@@ -50,7 +51,7 @@ body,
   
   /* BUTTON STYLING */
   .cl-socialButtonsBlockButton {
-    background-color: #7E5920;.cl-socialButtonsBlockButton {
+    background-color: #B69802;.cl-socialButtonsBlockButton {
       
       background-color: #FFA737;
       color: #ffffff;
@@ -71,13 +72,13 @@ body,
   }
   
   .cl-socialButtonsBlockButton:hover {
-    background-color: #ff5e00;
+    background-color: #FDD821;
   }
   
   /* DIVIDER STYLING */
   .cl-dividerLine {
     /* divider line */
-    border-top: 1px solid #583404;
+    border-top: 2px solid #583404;
   }
   
   .cl-dividerText {
@@ -97,7 +98,7 @@ body,
   .cl-formFieldInput {
     /* field input */
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 3px solid #ccc;
     border-radius: 30px;
   }
   
