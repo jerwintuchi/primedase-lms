@@ -7,6 +7,6 @@ export const Logo = () => {
         width={130}
         priority={false}
         alt="logo"
-        src="/primedase.svg"/>
+        src="/1234.svg"/>
     )
 }
