@@ -1,16 +1,16 @@
 "use client";
-import { BarChart, BarChart2Icon, Compass, Layout, List, ListCollapse, ListFilter, ListXIcon, TableProperties } from "lucide-react";
+import { BarChart, BarChart2Icon, Compass, Layout, List, ListCollapse, ListFilter, ListXIcon, Search, TableProperties } from "lucide-react";
 import SidebarItem from "./sidebar-item";
 import { usePathname } from "next/navigation";
 
 const guestRoutes = [
   {
-    Icon: Layout, // Use the updated prop name "Icon"
+    Icon: Layout, // Dashboard Icon
     label: "Dashboard",
     href: "/",
   },
   {
-    Icon: Compass, // Use the updated prop name "Icon"
+    Icon: Search, //Dashboard Icon (Non-Teacher)
     label: "Browse",
     href: "/search",
   },
@@ -18,12 +18,12 @@ const guestRoutes = [
 
 const teacherRoutes = [
   {
-    Icon: TableProperties, // Use the updated prop name "Icon"
+    Icon: TableProperties, // Teacher Icon Courses 
     label: "Courses",
     href: "/teacher/courses",
   },
   {
-    Icon: BarChart2Icon, // Use the updated prop name "Icon"
+    Icon: BarChart2Icon, // Analytics Icon
     label: "Analytics",
     href: "/teacher/analytics",
   },
