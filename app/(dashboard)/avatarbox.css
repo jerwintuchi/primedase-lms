@@ -26,7 +26,7 @@ body,
   /* MIDDLE PART OF THE POPUP CARD */
 
   .cl-userButtonPopoverActionButton {
-    color: #77371e; /* Dark gray text */
+    color: #770b3d; /* Dark purple text */
   }
 
   @layer base {
