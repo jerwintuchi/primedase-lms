@@ -17,6 +17,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link"
+import toast from "react-hot-toast";
 
 // require the user to atleast 1 string input and limit the title to 50 characters max
 const formSchema = z.object ({
@@ -45,7 +46,7 @@ const onSubmit = async (values: z.infer<typeof formSchema>) => {
         const response = await axios.post("/api/course", values)
         router.push(`/teacher/courses/${response.data.id}`)
     } catch {
-        console.log("Something went wrong");
+        toast.error("Something went wrong")
     }
 };
 
