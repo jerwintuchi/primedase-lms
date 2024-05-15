@@ -17,7 +17,7 @@ const NavbarRoutes = () => {
         <div className="flex gap-x-2 ml-auto">
             {isTeacherPage || isPlayerPage ? (
                 <Link href="/">
-                <Button size ="sm" className="text-white bg-red-400 hover:bg-red-400/20 hover:text-white size-auto">
+                <Button size ="sm" className="text-white bg-red-500 hover:bg-red-800 hover:text-white size-auto">
                     <LogOut className="h-4 w-4 mr-2"/>
                         Exit
                 </Button>
