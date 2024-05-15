@@ -65,14 +65,20 @@ const onSubmit = (values: z.infer<typeof formSchema>) => {
                                     <FormLabel className="text-purple-800">
                                         Course Title
                                     </FormLabel>
-                                    <FormControl >
+                                    <FormControl>
                                         <Input
+                                        className="border border-gray-300 px-3 py-2
+                                         hover:border-purple-500 text-purple-600
+                                         focus:border-purple-800
+                                         focus:border-2
+                                         placeholder-purple-400"
                                          disabled={isSubmitting}
                                          placeholder="like 'Quantum Physics' , 'Game Development'"
                                          {...field}
+                                         
                                          />
                                     </FormControl>  
-                                    <FormDescription className="text-purple-700">
+                                    <FormDescription className="text-purple-500">
                                         What topic will you teach?
                                     </FormDescription>
                                     <FormMessage/>  
