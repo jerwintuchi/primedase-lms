@@ -3,7 +3,7 @@ import * as z from "zod";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 import {
     Form,
@@ -23,23 +23,30 @@ const formSchema = z.object ({
     title: z.string().min(1, {
         message: "Title is required"
     }).max(50, {
-        message: "Maximum length of title reached"
+        message: "Must be 50 characters or less"
     })
 
 });
 
 const CreatePage = () => {
-const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-        title: ""
+    const router = useRouter();
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            title: ""
     },
 });
 
 const { isSubmitting, isValid } = form.formState;
 
-const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+// send a request to api
+const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try{
+        const response = await axios.post("/api/course", values)
+        router.push(`/teacher/courses/${response.data.id}`)
+    } catch {
+        console.log("Something went wrong");
+    }
 };
 
     return ( 
@@ -75,7 +82,6 @@ const onSubmit = (values: z.infer<typeof formSchema>) => {
                                          disabled={isSubmitting}
                                          placeholder="like 'Quantum Physics' , 'Game Development'"
                                          {...field}
-                                         
                                          />
                                     </FormControl>  
                                     <FormDescription className="text-purple-500">
