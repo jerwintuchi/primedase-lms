@@ -17,7 +17,7 @@ body {
 }
 
 .user-button-shadow {
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow properties as desired */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow properties */
   border-radius: 4px; /* Optional: Add border radius for a softer look */
 }
 

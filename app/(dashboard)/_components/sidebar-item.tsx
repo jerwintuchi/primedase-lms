@@ -30,7 +30,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, label, href }) =>
       type="button"
       className={cn(
         'flex items-center gap-x-2 text-purple-900 text-sm font-semibold pl-6 transition-all hover:text-black-600 hover:bg-purple-300',
-        isActive && 'text-purple-900 bg-purple-200 hover:bg-purple-200 hover:text-purple-700'
+        isActive && 'text-purple-900 bg-purple-200 hover:bg-purple-200 hover:text-purple-700 border-l-8 '
       )}
     >
       <div className="flex items-center gap-x-2 py-4">
@@ -42,7 +42,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, label, href }) =>
       </div>
       <div
         className={cn(
-          'ml-auto opacity-0 border-2 border-purple-800 h-full transition-all',
+          'ml-auto opacity-0 border-purple-600 h-full transition-all', // to add border on the right "border-2"
           isActive && 'opacity-100'
         )}
       />
