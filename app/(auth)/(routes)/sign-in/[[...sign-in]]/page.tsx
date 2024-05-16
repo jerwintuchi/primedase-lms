@@ -3,7 +3,7 @@ import { SignIn } from "@clerk/nextjs";
 
 export default function Page() {
   return (
-  <div> {/* Add a background color class here */}
+  <div>
     <SignIn path="/sign-in" />
   </div>
 
