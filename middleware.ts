@@ -13,12 +13,12 @@ import {
 
 const isProtectedRoute = createRouteMatcher([
   '/',
-  '/teacher/(.*)', //make some pages for admin/teacher or student/customer
+  '/teacher/(.*)', //for admin/teacher or student/customer pages 
 ]);
 
 
 
 export const config = {
   matcher: ["/((?!.+.[w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
-  publicRoutes: ['/', '/sign-in(.*)', '/sign-up(.*)'],
+  publicRoutes: ['/', '/sign-in(.*)', '/sign-up(.*)', '/landing(.*)'],
 };

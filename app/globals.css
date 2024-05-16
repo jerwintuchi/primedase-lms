@@ -10,7 +10,7 @@ body,
 
 /* BACKGROUND FOR THE LANDING PAGE*/
 body {
-  background-image: url("/login-bg.svg");
+  /*background-image: url("/login-bg.svg");*/
   background-repeat: no-repeat;  /* To prevent repeating the image */
   background-position: center;  /* To center the image */
   background-size: cover;       /* To cover the entire container */
