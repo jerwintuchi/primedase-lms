@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
-
+import { SidebarItemProps } from "./sidebar-routes";
 export const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, label, href }) => {
   const pathname = usePathname();
   const router = useRouter();
