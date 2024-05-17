@@ -1,6 +1,7 @@
-@tailwind base;
+ @tailwind base;
   @tailwind components;
   @tailwind utilities;
+  
 html,
 body,
 :root {
@@ -9,9 +10,8 @@ body,
 
 /*------------------------------------------------- C L E R K CUSTOM STYLE--------------------------------------------*/
 
-
 /* the one behind the front card*/
-.cl-cardBox{
+  .cl-cardBox{
     background-color: #770b3d;
     padding-bottom: 10px;
     border-radius: 45px 45px 0px 0px;
@@ -39,18 +39,15 @@ body,
     /* header title */
     font-size: 20px;
     font-weight: bold;
-    color: #333;
+    color: #770b3d;
   }
   
   .cl-headerSubtitle {
     /* header subtitle */
     font-size: 14px;
-    color: #000000;
+    color: #770b3d;
   }
-  
-  .cl-headerSubtitle.️.cl-internal-1vbkfwh {
-    content: "sdfasfs" !important;
-  }
+
   
   /* BUTTON STYLING */
   .cl-socialButtonsBlockButton {
@@ -137,7 +134,7 @@ body,
   .cl-internal-lqfubk {
     display: none; /* for the view account */
   }
-
+ 
   @layer base {
     * {
       @apply border-border;
