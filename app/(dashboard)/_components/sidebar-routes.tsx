@@ -1,6 +1,6 @@
 "use client";
 import { BarChart, BarChart2Icon, Compass, Layout, List, ListCollapse, ListFilter, ListXIcon, Search, TableProperties } from "lucide-react";
-import SidebarItem from "./sidebar-item";
+import { SidebarItem } from "./sidebar-item";
 import { usePathname } from "next/navigation";
 
 const guestRoutes = [
