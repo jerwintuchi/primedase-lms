@@ -10,8 +10,8 @@ export default async function Page() {
         <strong>Share your knowledge Teacher!</strong>
       </h1>
       <SignUp path="/teacher-sign-up" />
-      
+
     </div>
-    
+
   );
 }
