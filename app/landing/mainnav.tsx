@@ -17,7 +17,7 @@ const MainNav = () => {
                             About
                         </Button>
                 </Link>
-                
+                {/* FOR SIGN IN BUTTONS */}
                 <NavigationMenu>
                     <NavigationMenuList className="bg-purple-700">
                         <NavigationMenuItem className="bg-purple-700">
@@ -26,7 +26,7 @@ const MainNav = () => {
                                 </NavigationMenuTrigger> 
                                 <NavigationMenuContent className="bg-purple-700 border-purple-700">
                                 <NavigationMenuLink>
-                                    <Link href="/teacher-sign-up">
+                                    <Link href="/teacher-sign-in">
                                         <Button  className=" bg-yellow-400 hover:bg-yellow-300 hover:text-white">
                                             For Teachers
                                         </Button>
@@ -40,6 +40,31 @@ const MainNav = () => {
                             </NavigationMenuContent>
                         </NavigationMenuItem>
                     </NavigationMenuList>    
+            </NavigationMenu>
+
+            {/* FOR SIGN UP BUTTONS */}
+            <NavigationMenu>
+                    <NavigationMenuList className="bg-purple-700">
+                        <NavigationMenuItem className="bg-purple-700">
+                                <NavigationMenuTrigger className="bg-purple-700 hover:bg-purple-500">
+                                    Sign Up
+                                </NavigationMenuTrigger> 
+                                <NavigationMenuContent className="bg-purple-700 border-purple-700">
+                                <NavigationMenuLink>
+                                    <Link href="/teacher-sign-up">
+                                        <Button  className=" bg-yellow-400 hover:bg-yellow-300 hover:text-white">
+                                            For Teachers
+                                        </Button>
+                                    </Link>
+                                    <Link href="/sign-up">
+                                    <Button  className="bg-purple-700 hover:bg-purple-500 hover:text-white">
+                                        For Students
+                                    </Button>
+                                    </Link>
+                                </NavigationMenuLink>
+                            </NavigationMenuContent>
+                        </NavigationMenuItem>
+                    </NavigationMenuList>
             </NavigationMenu>
             </div>
         </nav>
