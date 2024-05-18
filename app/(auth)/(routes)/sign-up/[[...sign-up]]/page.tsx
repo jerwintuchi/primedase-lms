@@ -1,15 +1,21 @@
-import { SignIn } from "@clerk/nextjs";
+"use client";
+import { createUserWithRole } from "@/app/(auth)/mutator";
+import { SignUp } from "@clerk/nextjs";
 
 export default function Page() {
+  const handleSubmit = async (role: any) => {
+    // Handle form submission logic, call the createUserWithRole function
+    await createUserWithRole(role, "student"); // --with the supplied metadata
+  };
+
   return (
     <div className="flex flex-col items-center">
-    <h1 className="text-3xl pb-6 text-purple-700">
-        <strong>
-          Start your Learning Journey!
-        </strong>
-    </h1>
-    <SignIn path="/sign-up" />
-  </div>
-
+      {/* Your signup form */}
+      <form onSubmit={handleSubmit}>
+        {/* Form fields for student data */}
+        <button type="submit">Sign Up as Student</button>
+      </form>
+      <SignUp path="/sign-up" />
+    </div>
   );
 }
