@@ -1,4 +1,4 @@
-import { SignUp } from "@clerk/nextjs";
+import { SignIn } from "@clerk/nextjs";
 
 export default function Page() {
   return (
@@ -9,7 +9,7 @@ export default function Page() {
         </strong>
       </h1>
       <div className="pb-5">
-        <SignUp path="/teacher-sign-in"/>
+        <SignIn path="/teacher-sign-in"/>
       </div>
       
     </div>

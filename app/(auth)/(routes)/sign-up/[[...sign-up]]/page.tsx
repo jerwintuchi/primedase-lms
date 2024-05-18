@@ -1,16 +1,15 @@
-import { SignUp } from "@clerk/nextjs";
+import { SignIn } from "@clerk/nextjs";
 
 export default function Page() {
   return (
-    <div>
-      <h1 className="text-3xl pt-2 pl-16 pb-3.5 text-purple-700 no-scroll">
+    <div className="flex flex-col items-center">
+    <h1 className="text-3xl pl-16 pb-6 text-purple-700">
         <strong>
-          Become a Student!
+          Start your Learning Journey!
         </strong>
     </h1>
-    <SignUp path="/sign-up" />
-    </div>
-    
-)
-  
+    <SignIn path="/sign-up" />
+  </div>
+
+  );
 }
