@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 export async function createUserWithRole(
     req: NextApiRequest, 
     userData: any,
-    role: "student" | "teacher") {
+    userRole: "student" | "teacher") {
 
 
     if (!req || !req.url) {
