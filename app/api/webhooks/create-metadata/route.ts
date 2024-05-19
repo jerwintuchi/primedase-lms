@@ -1,77 +1,82 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
 import { Webhook, WebhookRequiredHeaders } from 'svix';
 import { headers } from 'next/headers';
 import { IncomingHttpHeaders } from 'http';
+import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
+const webhookSecret = process.env.WEBHOOK_METADATA || "";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
-  }
-
-  const payload = req.body;
+async function handler(request: Request) {
+  const payload = await request.json();
   const headersList = headers();
   const heads = {
-    "svix-id": headersList.get("svix-id"),
-    "svix-timestamp": headersList.get("svix-timestamp"),
-    "svix-signature": headersList.get("svix-signature"),
+    'svix-id': headersList.get('svix-id'),
+    'svix-timestamp': headersList.get('svix-timestamp'),
+    'svix-signature': headersList.get('svix-signature'),
   };
-  const wh = new Webhook(process.env.SVIX_WEBHOOK_SECRET!);
 
-  type EventType = 'user.created' | 'user.updated'; // Define other event types if necessary
+  const wh = new Webhook(webhookSecret);
 
-  interface Event {
+  type EventType = 'user.created' | 'user.updated' | 'user.deleted';
+
+  interface ClerkEvent {
     data: {
       id: string;
-      email_addresses: { email_address: string }[];
-      public_metadata: Record<string, any>;
-      private_metadata?: Record<string, any>; // Add other fields as needed
+      private_metadata?: Record<string, any>;
     };
     object: 'event';
     type: EventType;
   }
 
-  let evt: Event | null = null;
+  let evt: ClerkEvent | null = null;
 
   try {
-    evt = wh.verify(JSON.stringify(payload), heads as IncomingHttpHeaders & WebhookRequiredHeaders) as Event;
+    evt = wh.verify(JSON.stringify(payload), heads as IncomingHttpHeaders & WebhookRequiredHeaders) as ClerkEvent;
   } catch (err) {
     console.error((err as Error).message);
-    return res.status(400).json({ message: 'Invalid webhook signature' });
+    return NextResponse.json({}, { status: 400 });
   }
 
   const eventType = evt.type;
 
-  if (eventType === 'user.created') {
-    const { id, email_addresses, public_metadata, private_metadata } = evt.data;
-    const email = email_addresses[0].email_address;
-    const role = public_metadata?.role || 'student'; // Default role to 'student'
-
+  if (eventType === 'user.created' || eventType === 'user.updated') {
+    const { id,  private_metadata } = evt.data;
+    const role = private_metadata?.role || 'student'; // Default role to 'student'
+    // FOR CLERK DB
     await prisma.user.upsert({
       where: { clerkId: id },
       update: {
         role: role,
         clerkAttributes: {
-          ...public_metadata,
+          ...private_metadata,
           role: role,
         },
-        // Add private metadata if needed
-      },
+        
+      },  // FOR MY OWN POSTGRESQL DB
       create: {
         clerkId: id,
         role: role,
         clerkAttributes: {
-          ...public_metadata,
+          ...private_metadata,
           role: role,
         },
-        // Add private metadata if needed
+        
       },
     });
 
-    return res.status(200).json({ message: 'User created or updated' });
+    return NextResponse.json({ message: 'User created or updated' }, { status: 200 });
+  } else if (eventType === 'user.deleted') {
+    await prisma.user.delete({
+      where: { clerkId: evt.data.id },
+    });
+
+    return NextResponse.json({ message: 'User deleted' }, { status: 200 });
   }
 
-  return res.status(400).json({ message: 'Unhandled event type' });
+  return NextResponse.json({ message: 'Unhandled event type' }, { status: 400 });
 }
+
+export const GET = handler;
+export const POST = handler;
+export const PUT = handler;
