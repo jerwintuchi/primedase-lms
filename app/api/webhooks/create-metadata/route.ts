@@ -23,7 +23,7 @@ async function handler(request: Request) {
   interface ClerkEvent {
     data: {
       id: string;
-      private_metadata?: Record<string, any>;
+      privateMetadata?: Record<string, any>;
     };
     object: 'event';
     type: EventType;
@@ -41,16 +41,16 @@ async function handler(request: Request) {
   const eventType = evt.type;
 
   if (eventType === 'user.created' || eventType === 'user.updated') {
-    const { id,  private_metadata } = evt.data;
-    const role = private_metadata?.role || 'student'; // Default role to 'student'
+    const { id,  privateMetadata } = evt.data;
+    const role = privateMetadata?.role || 'student'; // Default role to 'student'
     // FOR CLERK DB
     await prisma.user.upsert({
       where: { clerkId: id },
       update: {
-        role: role,
         clerkAttributes: {
-          ...private_metadata,
-          role: role,
+          privateMetadata: {
+            "role": role
+          }
         },
         
       },  // FOR MY OWN POSTGRESQL DB
@@ -58,7 +58,7 @@ async function handler(request: Request) {
         clerkId: id,
         role: role,
         clerkAttributes: {
-          ...private_metadata,
+          ...privateMetadata,
           role: role,
         },
         

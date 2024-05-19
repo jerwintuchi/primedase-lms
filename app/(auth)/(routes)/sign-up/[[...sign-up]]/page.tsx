@@ -8,7 +8,6 @@ export default function Page() {
           Start your Learning Journey!
         </strong>
     </h1>
-    <input type="hidden" name="role" value="student" />
     <SignUp path="/sign-up" />
   </div>
 
