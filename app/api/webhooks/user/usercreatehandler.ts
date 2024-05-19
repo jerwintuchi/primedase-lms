@@ -16,7 +16,7 @@ export default async function handler(request : Request) {
     "svix-signature": headersList.get("svix-signature"),
   };
 
-  const wh = new Webhook(process.env.WEBHOOK_SECRET!);
+  const wh = new Webhook(process.env.WEBHOOK_SECRET2!);
 
 let evt: Event | null = null;
 
