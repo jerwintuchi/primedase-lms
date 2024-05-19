@@ -6,7 +6,7 @@ import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
-export default async function handler(request : Request) {
+async function handler(request : Request) {
 
   const payload = await request.json();
   const headersList = headers();
