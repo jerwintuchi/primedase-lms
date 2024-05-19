@@ -20,7 +20,7 @@ export async function createUserWithRole(
       const user = await clerkClient.users.createUser({
         ...userData, // Spread user data from your form or component
         privateMetadata: { 
-          role: `${role}`
+          role: role
          }, 
       });
       toast.success("Registered Successfully!", user);

@@ -5,7 +5,7 @@ export default function Page() {
     <div className="flex flex-col items-center">
     <h1 className="text-3xl  pb-6 text-purple-700">
         <strong>
-          Start your Learning Journey!
+          Start your Teaching Journey!
         </strong>
     </h1>
     <input type="hidden" name="role" value="student" />
