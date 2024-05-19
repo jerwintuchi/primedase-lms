@@ -70,7 +70,7 @@ async function handler(request: Request) {
     await prisma.user.delete({
       where: { clerkId: evt.data.id },
     });
-
+    
     return NextResponse.json({ message: 'User deleted' }, { status: 200 });
   }
 
