@@ -16,7 +16,7 @@ async function handler(request : Request) {
     "svix-signature": headersList.get("svix-signature"),
   };
 
-  const wh = new Webhook(process.env.WEBHOOK_SECRET2!);
+  const wh = new Webhook(process.env.WEBHOOK_CRUD!);
 
 let evt: Event | null = null;
 
@@ -31,14 +31,14 @@ try {
  }   
 
 const eventType: EventType = evt.type;
-if (eventType === "user.created" || eventType === "user.updated" || eventType === "*") {
+if (eventType === "user.created" || eventType === "user.updated" || eventType === "user.deleted") {
     const {id, ...clerkAttributes} = evt.data;
     console.log(id);
     console.log(clerkAttributes);  // from the User model
     return NextResponse.json({}, {status: 200})
 }
 
-type EventType = "user.created" | "user.updated" | "*";
+type EventType = "user.created" | "user.updated" | "user.deleted";
 
 type Event = {
     data: Record<string, string | number>,
