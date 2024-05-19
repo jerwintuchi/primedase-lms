@@ -5,7 +5,7 @@ import { IncomingHttpHeaders } from 'http';
 import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
-
+const webhookSecret = process.env.WEBHOOK_CRUD || "";
 async function handler(request : Request) {
 
   const payload = await request.json();
@@ -16,7 +16,7 @@ async function handler(request : Request) {
     "svix-signature": headersList.get("svix-signature"),
   };
 
-  const wh = new Webhook(process.env.WEBHOOK_CRUD!);
+  const wh = new Webhook(webhookSecret);
 
 let evt: Event | null = null;
 
