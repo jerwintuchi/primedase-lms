@@ -1,4 +1,3 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
 import { Webhook, WebhookRequiredHeaders } from 'svix';
 import { headers } from 'next/headers';
@@ -7,12 +6,9 @@ import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
-  }
+export default async function handler(request : Request) {
 
-  const payload = req.body;
+  const payload = await request.json();
   const headersList = headers();
   const heads = {
     "svix-id": headersList.get("svix-id"),
@@ -50,3 +46,8 @@ type Event = {
     };
   
 }
+
+export const GET = handler;
+export const POST = handler;
+export const PUT = handler;
+
