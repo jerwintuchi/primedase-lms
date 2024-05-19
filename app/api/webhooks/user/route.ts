@@ -31,10 +31,11 @@ try {
  }   
 
 const eventType: EventType = evt.type;
-if (eventType === "user.created" || eventType === "user.updated") {
+if (eventType === "user.created" || eventType === "user.updated" || eventType === "*") {
     const {id, ...clerkAttributes} = evt.data;
     console.log(id);
     console.log(clerkAttributes);  // from the User model
+    return NextResponse.json({}, {status: 200})
 }
 
 type EventType = "user.created" | "user.updated" | "*";
