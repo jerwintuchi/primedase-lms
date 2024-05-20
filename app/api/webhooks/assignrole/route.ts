@@ -49,7 +49,7 @@ async function handler(request: Request) {
       const pathname = url.pathname;
       if (pathname === '/teacher-sign-up') {
         role = 'teacher';
-      } else if (pathname === '/student-sign-up') {
+      } else if (pathname === '/sign-up') {
         role = 'student';
       } else {
         console.warn('Unrecognized signup path:', pathname);
