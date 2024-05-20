@@ -134,7 +134,7 @@ body,
   .cl-internal-lqfubk {
     display: none; /* for the view account */
   }
- 
+/*  
   @layer base {
     * {
       @apply border-border;
@@ -142,6 +142,6 @@ body,
     body {
       @apply bg-background text-foreground;
     }
-  }
+  } */
 
   /*----------------------------------------------------------------END OF CLERK CUSTOMIZATION-----------------------------------*/
