@@ -1,7 +1,8 @@
 import React from "react";
 import MainNav from "../landing/mainnav";
 import Link from "next/link";
-import { UserButton } from "@clerk/nextjs";
+import { SignOutButton, UserButton } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
 
 const UnauthorizedPage = () => {
   return (
@@ -23,7 +24,7 @@ const UnauthorizedPage = () => {
         </p>
         <Link href="/landing">
           <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
-            <UserButton afterSignOutUrl="/sign-in">Sign in again</UserButton>
+            <SignOutButton redirectUrl="/sign-in">Sign in again</SignOutButton>
           </button>
         </Link>
       </div>
