@@ -3,6 +3,7 @@ import { Webhook, WebhookRequiredHeaders } from 'svix';
 import { headers } from 'next/headers';
 import { IncomingHttpHeaders } from 'http';
 import { NextResponse } from 'next/server';
+import { clerkClient } from '@clerk/nextjs/server';
 
 const prisma = new PrismaClient();
 const webhookSecret = process.env.WEBHOOK_METADATA || "";
@@ -23,13 +24,15 @@ async function handler(request: Request) {
   interface ClerkEvent {
     data: {
       id: string;
-      privateMetadata?: Record<string, any>;
+      publicMetadata?: Record<string, any>;
     };
     object: 'event';
     type: EventType;
   }
 
   let evt: ClerkEvent | null = null;
+
+  
 
   try {
     evt = wh.verify(JSON.stringify(payload), heads as IncomingHttpHeaders & WebhookRequiredHeaders) as ClerkEvent;
@@ -40,15 +43,26 @@ async function handler(request: Request) {
 
   const eventType = evt.type;
 
+  const { id,  publicMetadata } = evt.data;
+  const role = publicMetadata?.role || 'student'; // Default role to 'student'
+
+  //LOGIC FOR FIRST TIME USER CREATION
+  if(eventType === "user.created"){
+    const updateMetaData = await clerkClient.users.updateUserMetadata(id, {
+    publicMetadata: {
+      "role": role    //SET INITIALLY TO STUDENT SINCE DAPAT SA BACKEND LANG MANGYAYARI ANG ASSIGNMENT OF TEACHER/ADMIN ROLE
+    }
+  })
+  console.log(updateMetaData);
+  }
+  
   if (eventType === 'user.created' || eventType === 'user.updated') {
-    const { id,  privateMetadata } = evt.data;
-    const role = privateMetadata?.role || 'student'; // Default role to 'student'
     // FOR CLERK DB
     await prisma.user.upsert({
       where: { clerkId: id },
       update: {
         clerkAttributes: {
-          privateMetadata: {
+          publicMetadata: { 
             "role": role
           }
         },
@@ -58,7 +72,7 @@ async function handler(request: Request) {
         clerkId: id,
         role: role,
         clerkAttributes: {
-          ...privateMetadata,
+          ...publicMetadata,
           role: role,
         },
         

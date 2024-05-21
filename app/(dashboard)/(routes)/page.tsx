@@ -6,10 +6,10 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default function TeacherDashBoard(role: Roles) {
-  const { sessionClaims } = auth();
-
-  if (!checkRole("teacher")) {
-    console.log("UNAUTHORIZED"); //end user session in clerk
+  if (checkRole("student")) {
+    return redirect("/student");
+  } else if (!checkRole("teacher")) {
+    console.log("UNAUTHORIZED");
 
     return redirect("/unauthorized");
   }

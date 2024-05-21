@@ -1,11 +1,13 @@
-import NavbarRoutes from "@/components/navbar-routes"
-import { MobileSidebar } from "./mobile-sidebar"
+import NavbarRoutes from "@/components/navbar-routes";
+import { MobileSidebar } from "./mobile-sidebar";
+import { Protect } from "@clerk/nextjs";
 
 export const Navbar = () => {
-    return ( //NAVBAR WITH THE AVATARBOX
-        <div className="p-4 border-b h-full flex items-center bg-yellow-300 shadow-sm">
-            <MobileSidebar/>
-            <NavbarRoutes/>
-        </div>
-    )
-}
+  return (
+    //NAVBAR WITH THE AVATARBOX
+    <div className="p-4 border-b h-full flex items-center bg-yellow-300 shadow-sm">
+      <MobileSidebar />
+      <NavbarRoutes />
+    </div>
+  );
+};
