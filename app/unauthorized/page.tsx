@@ -3,7 +3,7 @@ import MainNav from "../landing/mainnav";
 import Link from "next/link";
 import { SignOutButton, UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
-
+import Image from "next/image";
 const UnauthorizedPage = () => {
   return (
     <div>
@@ -12,7 +12,7 @@ const UnauthorizedPage = () => {
 
       {/* Unauthorized Page Content */}
       <div className="bg-yellow-200 h-[calc(100vh-72px)] text-purple-700 flex flex-col justify-center items-center">
-        <img
+        <Image
           src="error.svg"
           alt="Unauthorized Access"
           className="h-auto w-auto mb-4"
