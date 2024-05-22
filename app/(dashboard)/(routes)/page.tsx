@@ -5,7 +5,7 @@ import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-export default function TeacherDashBoard(role: Roles) {
+export default function TeacherDashBoard(role: Roles): JSX.Element {
   if (checkRole("student")) {
     return redirect("/student");
   } else if (!checkRole("teacher")) {
