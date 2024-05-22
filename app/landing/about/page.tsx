@@ -9,7 +9,7 @@ const AboutPage = () => {
       <MainNav />
 
       <section className="hero flex flex-col justify-center items-center h-screen">
-        <Image
+        <img
           src="/book-open.svg"
           alt="Book Icon"
           className="book-image justify-center h-20 w-20 pb-5"
@@ -117,7 +117,7 @@ const AboutPage = () => {
               width={50} // specify the width of the image
               height={50} // specify the height of the image
             />
-            <div className="text-xs mb-3.5">&apos;©&apos; 2024 Primedase.</div>
+            <div className="text-xs mb-3.5">© 2024 Primedase.</div>
           </div>
         </div>
       </section>

@@ -13,6 +13,8 @@ const UnauthorizedPage = () => {
       {/* Unauthorized Page Content */}
       <div className="bg-yellow-200 h-[calc(100vh-72px)] text-purple-700 flex flex-col justify-center items-center">
         <Image
+          width={50} // specify the width of the image
+          height={50} // specify the height of the image
           src="error.svg"
           alt="Unauthorized Access"
           className="h-auto w-auto mb-4"
