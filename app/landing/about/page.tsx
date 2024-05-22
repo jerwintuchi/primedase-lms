@@ -2,7 +2,7 @@ import React from "react";
 import MainNav from "../mainnav";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-
+import Image from "next/image";
 const AboutPage = () => {
   return (
     <div className="about-page bg-yellow-300">
@@ -111,7 +111,12 @@ const AboutPage = () => {
           </Link>
 
           <div className="ml-10 flex items-center">
-            <img src="/primedase-footer.svg" alt="Logo Icon" />
+            <Image
+              src="/primedase-footer.svg"
+              alt="Logo Icon"
+              width={50} // specify the width of the image
+              height={50} // specify the height of the image
+            />
             <div className="text-xs mb-3.5">© 2024 Primedase.</div>
           </div>
         </div>
