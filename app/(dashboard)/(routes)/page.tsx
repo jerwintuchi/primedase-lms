@@ -1,14 +1,19 @@
 import { Roles } from "@/app/types/globals";
 import { checkRole } from "@/app/utils/roles";
 import { UserButton } from "@clerk/nextjs";
-import { auth } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-export default function TeacherDashBoard(role: Roles) {
+export default async function TeacherDashBoard(role: Roles) {
+  const user = await currentUser();
+
   if (checkRole("student")) {
     return redirect("/student");
-  } else if (!checkRole("teacher")) {
+  } else if (
+    !checkRole("teacher") && // checking for publicMetaData
+    user?.privateMetadata?.role !== "teacher" //for privateMetaData
+  ) {
     console.log("UNAUTHORIZED");
 
     return redirect("/unauthorized");
