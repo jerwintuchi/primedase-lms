@@ -49,57 +49,18 @@ async function handler(request: Request) {
   const defaultrole = publicMetadata?.role || "student"; // Default role to 'student'
   const teacherrole = privateMetadata?.role || "teacher"; // Default role to 'teacher'
   const currentUser = await clerkClient.users.getUser(id);
+
   //LOGIC FOR FIRST TIME USER CREATION
   if (eventType === "user.created") {
-    const updatepublicMetaData = await clerkClient.users.updateUserMetadata(
-      id,
-      {
-        publicMetadata: {
-          role: defaultrole, //SET INITIALLY TO STUDENT SINCE DAPAT SA BACKEND LANG MANGYAYARI ANG ASSIGNMENT OF TEACHER/ADMIN ROLE
-        },
-      }
-    );
-    console.log(updatepublicMetaData);
-  } else if (
-    //if user already exists and is not a teacher and is not a student
-    id && // meaning the role student is deleted
-    currentUser.publicMetadata?.role !== defaultrole &&
-    currentUser.privateMetadata?.role !== teacherrole &&
-    eventType === "user.updated"
-  ) {
-    const updateprivateMetaData = await clerkClient.users.updateUserMetadata(
-      id,
-      {
-        publicMetadata: {
-          role: defaultrole, //SET ALWAYS TO STUDENT ROLE
-        },
-      }
-    );
-    console.log(updateprivateMetaData);
-    return NextResponse.json(
-      { message: "User with no role has been set back to student" },
-      { status: 200 }
-    );
-  } else if (
-    id &&
-    currentUser.publicMetadata?.role !== defaultrole &&
-    currentUser.privateMetadata?.role === teacherrole &&
-    eventType === "user.updated"
-  ) {
-    await prisma.user.update({
-      where: { clerkId: id },
-      data: {
-        role: "teacher",
+    const updateMetaData = await clerkClient.users.updateUserMetadata(id, {
+      publicMetadata: {
+        role: defaultrole, //SET INITIALLY TO STUDENT SINCE DAPAT SA BACKEND LANG MANGYAYARI ANG ASSIGNMENT OF TEACHER/ADMIN ROLE
       },
     });
-
-    return NextResponse.json(
-      { message: "User isn't student so it has been set to teacher" },
-      { status: 200 }
-    );
+    console.log(updateMetaData);
   }
 
-  if (eventType === "user.created") {
+  if (eventType === "user.created" || eventType === "user.updated") {
     // FOR CLERK DB
     await prisma.user.upsert({
       where: { clerkId: id },
@@ -121,7 +82,7 @@ async function handler(request: Request) {
     });
 
     return NextResponse.json(
-      { message: "User created in Postgresql db" },
+      { message: "User created or updated" },
       { status: 200 }
     );
   } else if (eventType === "user.deleted") {
@@ -130,6 +91,28 @@ async function handler(request: Request) {
     });
 
     return NextResponse.json({ message: "User deleted" }, { status: 200 });
+  }
+
+  if (
+    eventType === "user.updated" &&
+    currentUser.publicMetadata?.role != "student"
+  ) {
+    if (currentUser.privateMetadata?.role === "teacher") {
+      const updateMetaData = await clerkClient.users.updateUserMetadata(id, {
+        privateMetadata: {
+          role: teacherrole, //SET INITIALLY TO STUDENT SINCE DAPAT SA BACKEND LANG MANGYAYARI ANG ASSIGNMENT OF TEACHER/ADMIN ROLE
+        },
+      });
+
+      await prisma.user.update({
+        //SYNCH THE CHANGES TO MY DB!!!!!!!!!!!!!!!!!
+        where: { clerkId: id },
+        data: {
+          role: "teacher",
+        },
+      });
+      console.log(updateMetaData);
+    }
   }
 
   return NextResponse.json(

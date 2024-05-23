@@ -1,6 +1,5 @@
 import NavbarRoutes from "@/components/navbar-routes";
 import { MobileSidebar } from "./mobile-sidebar";
-import { Protect } from "@clerk/nextjs";
 
 export const Navbar = () => {
   return (
