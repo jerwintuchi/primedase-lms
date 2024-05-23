@@ -49,12 +49,15 @@ async function handler(request: Request) {
 
   //LOGIC FOR FIRST TIME USER CREATION
   if (eventType === "user.created") {
-    const updateMetaData = await clerkClient.users.updateUserMetadata(id, {
-      publicMetadata: {
-        role: role, //SET INITIALLY TO STUDENT SINCE DAPAT SA BACKEND LANG MANGYAYARI ANG ASSIGNMENT OF TEACHER/ADMIN ROLE
-      },
-    });
-    console.log(updateMetaData);
+    const updatepublicMetaData = await clerkClient.users.updateUserMetadata(
+      id,
+      {
+        publicMetadata: {
+          role: role, //SET INITIALLY TO STUDENT SINCE DAPAT SA BACKEND LANG MANGYAYARI ANG ASSIGNMENT OF TEACHER/ADMIN ROLE
+        },
+      }
+    );
+    console.log(updatepublicMetaData);
   }
 
   if (eventType === "user.created" || eventType === "user.updated") {
