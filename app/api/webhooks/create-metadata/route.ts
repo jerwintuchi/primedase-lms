@@ -45,7 +45,7 @@ async function handler(request: Request) {
   const eventType = evt.type;
 
   const { id, publicMetadata } = evt.data;
-  const role = publicMetadata?.role || "student"; // Default role to 'student'
+  const defaultrole = publicMetadata?.role || "student"; // Default role to 'student'
 
   //LOGIC FOR FIRST TIME USER CREATION
   if (eventType === "user.created") {
@@ -53,7 +53,7 @@ async function handler(request: Request) {
       id,
       {
         publicMetadata: {
-          role: role, //SET INITIALLY TO STUDENT SINCE DAPAT SA BACKEND LANG MANGYAYARI ANG ASSIGNMENT OF TEACHER/ADMIN ROLE
+          role: defaultrole, //SET INITIALLY TO STUDENT SINCE DAPAT SA BACKEND LANG MANGYAYARI ANG ASSIGNMENT OF TEACHER/ADMIN ROLE
         },
       }
     );
@@ -67,16 +67,16 @@ async function handler(request: Request) {
       update: {
         clerkAttributes: {
           publicMetadata: {
-            role: role,
+            role: defaultrole,
           },
         },
       }, // FOR MY OWN POSTGRESQL DB
       create: {
         clerkId: id,
-        role: role,
+        role: defaultrole,
         clerkAttributes: {
           ...publicMetadata,
-          role: role,
+          role: defaultrole,
         },
       },
     });
