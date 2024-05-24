@@ -8,11 +8,12 @@ import { redirect } from "next/navigation";
 export default async function TeacherDashBoard(role: Roles) {
   const user = await currentUser();
 
-  if (checkRole("student")) {
+  if (checkRole("student") && user) {
     return redirect("/student");
   } else if (
     !checkRole("teacher") && // checking for publicMetaData
-    user?.privateMetadata?.role !== "teacher" //for privateMetaData
+    user?.privateMetadata?.role !== "teacher" && //for privateMetaData
+    user
   ) {
     console.log("UNAUTHORIZED");
 

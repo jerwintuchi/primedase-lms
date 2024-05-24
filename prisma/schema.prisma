@@ -18,7 +18,7 @@ model User {
   id      Int    @id @default(autoincrement())
   clerkId String @unique
 
-  role            String
+  role            String @default("student")
   clerkAttributes Json?
 
   createdAt DateTime @default(now())

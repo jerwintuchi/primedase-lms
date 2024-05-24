@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 import { Webhook, WebhookRequiredHeaders } from "svix";
 import { headers } from "next/headers";
 import { IncomingHttpHeaders } from "http";
@@ -46,77 +46,52 @@ async function handler(request: Request) {
   const eventType = evt.type;
 
   const { id, publicMetadata, privateMetadata } = evt.data;
-  const role = publicMetadata?.role || "student"; // Default role to 'student'
-  const teacherrole = privateMetadata?.teacherrole || "teacher";
+  const defaultrole = publicMetadata?.role || "student"; // Default role to 'student'
+  const teacherrole = privateMetadata?.role || "teacher";
+  let userdata: Prisma.UserCreateInput;
 
   const user = await currentUser();
-
   //LOGIC FOR FIRST TIME USER CREATION
   if (eventType === "user.created") {
-    const updateMetaData = await clerkClient.users.updateUserMetadata(id, {
+    await clerkClient.users.updateUserMetadata(id, {
       publicMetadata: {
-        role: role, //SET INITIALLY TO STUDENT SINCE DAPAT SA BACKEND LANG MANGYAYARI ANG ASSIGNMENT OF TEACHER/ADMIN ROLE
+        role: defaultrole,
       },
     });
-    await prisma.user.upsert({
-      where: { clerkId: id },
-      update: {
+    await prisma.user.create({
+      data: {
+        clerkId: id,
         clerkAttributes: {
           publicMetadata: {
-            role: role,
+            role: defaultrole,
           },
         },
-      }, // FOR MY OWN POSTGRESQL DB
-      create: {
-        clerkId: id,
-        role: role,
-        clerkAttributes: {
-          ...publicMetadata,
-          role: role,
-        },
+        role: defaultrole, // Add this line
       },
     });
-    console.log(updateMetaData);
     return NextResponse.json(
-      { message: "User succesfully created" },
+      { message: "User is created as student by default" },
       { status: 200 }
     );
   }
 
   if (eventType === "user.updated") {
-    // FOR CLERK DB
-    await prisma.user.upsert({
-      where: { clerkId: id },
-      update: {
+    const updatedUser = await clerkClient.users.getUser(evt.data.id);
+    const newRole = updatedUser.privateMetadata?.role as string; // Access user role from custom attribute
+    await prisma.user.update({
+      where: { clerkId: evt.data.id },
+      data: {
+        role: newRole, // Update role column in Prisma based on Clerk data
         clerkAttributes: {
-          publicMetadata: {
-            role: role,
+          privateMetadata: {
+            role: newRole,
           },
-        },
-      }, // FOR MY OWN POSTGRESQL DB
-      create: {
-        clerkId: id,
-        role: role,
-        clerkAttributes: {
-          ...publicMetadata,
-          role: role,
         },
       },
     });
-    if (
-      user?.publicMetadata?.role != "student" ||
-      user?.privateMetadata?.role === "teacher"
-    ) {
-      await prisma.user.update({
-        where: { clerkId: id },
-        data: {
-          role: "teacher",
-        },
-      });
-    }
 
     return NextResponse.json(
-      { message: "User created or updated" },
+      { message: "User is now teacher" },
       { status: 200 }
     );
   } else if (eventType === "user.deleted") {
