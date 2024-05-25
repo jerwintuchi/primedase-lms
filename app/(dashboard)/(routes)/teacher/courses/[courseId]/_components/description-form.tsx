@@ -18,6 +18,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 interface DescriptionFormProps {
   initialData: {
     description: string | null;
@@ -102,12 +103,17 @@ export const DescriptionForm = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Textarea
-                      disabled={isSubmitting}
-                      placeholder="Add a description"
-                      {...field}
-                      className="border border-purple-700 px-3 py-2 text-purple-700"
-                    />
+                    <Label htmlFor="label" className="text-purple-700">
+                      Description
+                      <Textarea
+                        style={{ height: "150px" }}
+                        rows={20}
+                        disabled={isSubmitting}
+                        placeholder="Add a description&nbsp;"
+                        {...field}
+                        className="border border-purple-700 px-3 py-3 text-purple-700"
+                      />
+                    </Label>
                   </FormControl>
                   <FormMessage className="text-red-500 drop-shadow-sm" />
                 </FormItem>

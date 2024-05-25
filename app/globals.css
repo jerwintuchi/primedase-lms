@@ -21,6 +21,11 @@ body {
   border-radius: 4px; /* Optional: Add border radius for a softer look */
 }
 
+.Textarea {
+  white-space: pre-wrap; /* Allow line breaks for long strings */
+  word-break: break-all;  /* Break on character boundaries if needed */
+}
+
   @layer base {
     :root {
       --background: 0 0% 100%;
