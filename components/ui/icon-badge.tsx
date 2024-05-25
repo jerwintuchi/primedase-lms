@@ -2,6 +2,21 @@ import { LucideIcon } from "lucide-react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
+type BackgoundVariantProps = VariantProps<typeof backgroundVariants>;
+type IconVariantProps = VariantProps<typeof iconVariants>;
+
+interface IconBadgeProps extends BackgoundVariantProps, IconVariantProps {
+  icon: LucideIcon;
+}
+
+export const IconBadge = ({ icon: Icon, variant, size }: IconBadgeProps) => {
+  return (
+    <div className={cn(backgroundVariants({ variant, size }))}>
+      <Icon className={cn(iconVariants({ variant, size }))} />
+    </div>
+  );
+};
+
 const backgroundVariants = cva(
   "rounded-full flex items-center justify-center",
   {
