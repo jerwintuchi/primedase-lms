@@ -5,13 +5,11 @@ import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
 import { LogOut } from "lucide-react";
 import Link from "next/link";
-import { auth, getAuth } from "@clerk/nextjs/server";
 import { isTeacher } from "@/lib/teacher";
-import { checkRole } from "@/app/utils/roles";
 import { GreetUser } from "./greetings/greetuser";
+
 const NavbarRoutes = () => {
   const { userId } = useAuth();
-
   const pathname = usePathname();
 
   const isTeacherPage = pathname?.startsWith("/teacher");
