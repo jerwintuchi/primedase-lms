@@ -9,7 +9,7 @@ export default clerkMiddleware((auth, req) => {
 const isProtectedRoute = createRouteMatcher([
   "/",
   "/teacher/(.*)", //for admin/teacher or student/customer pages
-  "/student/(.*)",
+  "/student", //kapag wala pang subroutes don't put (.*)
 ]);
 
 export const config = {
