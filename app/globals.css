@@ -90,10 +90,16 @@ body {
     }
   }
 
-  /*--------------------AVATARBOX----------------------------- C L E R K CUSTOM STYLE--------------------------------------------*/
+  /*--------------------AVATARBOX------------ C L E R K CUSTOM STYLE--------------------------------------------*/
+
+.cl-userPreviewAvatarContainer{
+  border: 2px solid #f0f0f0; 
+  border-radius: 100%; 
+  padding: 2px; 
+}
 
 .cl-internal-1baqzr {
-  background-color: #b108a8;
+  background-color: #8D1717;
   
 }
 
@@ -109,11 +115,14 @@ body {
 /* MIDDLE PART OF THE POPUP CARD */
 
 .cl-userButtonPopoverActionButton {
-  color: #770b3d; /* Dark purple text */
+  color: #8D1717; /* red text */
+}
+.cl-userButtonPopoverActionButton:hover {
+  color: #e01c1c; /* highlight red text when hovering */
 }
 /* the one behind the front card*/
 .cl-cardBox{
-  background-color: #770b3d;
+  background-color: #b91c1c;
   padding-bottom: 10px;
   border-radius: 45px 45px 0px 0px;
   border: 3px solid #000000;
@@ -121,7 +130,7 @@ body {
 
 .cl-card {
   /* card container */
-  background-color: #FDE047;
+  background-color: #4e0a0a;
   border-radius: 40px 40px 0px 0px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   padding: 20px;
@@ -140,60 +149,50 @@ body {
   /* header title */
   font-size: 20px;
   font-weight: bold;
-  color: #770b3d;
+  color: #ffffff;
 }
 
 .cl-headerSubtitle {
   /* header subtitle */
   font-size: 14px;
-  color: #770b3d;
+  color: #c0bebe;
 }
 
 /*------------------SIGNIN----CARD-------------------------------------*/
 /* BUTTON STYLING */
 .cl-socialButtonsBlockButton {
-  background-color: #B69802;.cl-socialButtonsBlockButton {
-    
-    background-color: #f0a544;
-    color: #ffffff;
+  /*GOOGLE BUTTON*/
+  background-color: #700909 ;
+  color: #ffffff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .cl-socialButtonsBlockButton:hover {
-    background-color: #0056b3;
-  }
-  color: #ffffff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
+
 .cl-socialButtonsBlockButton:hover {
-  background-color: #FDD821;
+  background-color: #d60c0c;
 }
 
 /* DIVIDER STYLING */
 .cl-dividerLine {
   /* divider line */
-  border-top: 2px solid #583404;
+  border-top: 2px solid #9e9e9e;
 }
 
 .cl-dividerText {
   /*  divider text */
   font-size: 12px;
-  color: #7E5920;
+  color: #fff;
   margin: 0 10px;
 }
 
 /* FORM FIELD STYLING */
 .cl-formFieldLabel {
-  /* field label */
+  /* EMAIL OR USERNAME label */
   font-size: 14px;
-  color: #333;
+  color: #ffffff;
 }
 
 .cl-formFieldInput {
@@ -206,7 +205,7 @@ body {
 /* PRIMARY BUTTON STYLING */
 .cl-formButtonPrimary {
   /* button */
-  background-color: #770b3d;
+  background-color: #8b3706;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -216,11 +215,11 @@ body {
 
 .cl-formButtonPrimary:hover {
   /*hover styles for the primary button */
-  background-color: #b108a8;
+  background-color: #8D1717;
 }
 
 .cl-footer {
-  background-color: #bb276c;
+  background-color: #490D0D;
   /*border-radius: 0px 0px 20px 20px;*/
 }
 /* Hides the "Secured by Clerk" element */
