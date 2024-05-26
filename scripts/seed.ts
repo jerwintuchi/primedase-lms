@@ -4,7 +4,7 @@ const database = new PrismaClient();
 
 async function main() {
   try {
-    await database.categories.createMany({
+    await database.category.createMany({
       data: [
         { name: "Elemental Magic" },
         { name: "Illusion Arts" },
@@ -17,7 +17,6 @@ async function main() {
         { name: "ᛟᚾᚡᛖᚱ" },
       ],
     });
-
     console.log("Categories of Magic seeded");
   } catch (error) {
     console.log("Error seeing the db categories", error);
