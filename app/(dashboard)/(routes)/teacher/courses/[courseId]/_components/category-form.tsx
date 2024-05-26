@@ -3,7 +3,6 @@ import * as z from "zod";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
 import {
   Form,
   FormControl,
@@ -20,6 +19,7 @@ import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
 import { Course } from "@prisma/client";
 import { Combobox } from "@/components/ui/combobox";
+
 interface CategoryFormProps {
   initialData: Course;
   courseId: string;
@@ -50,7 +50,7 @@ export const CategoryForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
-      toast.success("Course category updated");
+      toast.success("Course description updated");
       toggleEdit();
       router.refresh();
     } catch {
@@ -101,7 +101,7 @@ export const CategoryForm = ({
                     <Label htmlFor="label" className="text-purple-700">
                       Category of magic
                       <div className="pt-2">
-                        <Combobox options={...options} {...field} />
+                        <Combobox options={options} {...field} />
                       </div>
                     </Label>
                   </FormControl>
