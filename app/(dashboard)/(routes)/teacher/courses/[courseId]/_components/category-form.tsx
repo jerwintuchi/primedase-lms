@@ -50,7 +50,7 @@ export const CategoryForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
-      toast.success("Course description updated");
+      toast.success("Course Category updated");
       toggleEdit();
       router.refresh();
     } catch {
@@ -81,7 +81,7 @@ export const CategoryForm = ({
       {!isEditing && (
         <p
           className={cn(
-            "text-sm mt-2",
+            "text-sm mt-2 text-purple-700 border-purple-900 border-2 rounded-full p-1 inline-block font-medium",
             !initialData.categoryId && "text-slate-500 italic"
           )}>
           {selectedOption?.label || "No Category yet."}
