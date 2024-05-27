@@ -9,15 +9,14 @@ const Sidebar = () => {
         <div className="flex flex-col w-full">
           <SidebarRoutes />
         </div>
-      </div>
-      <div>
-        <div className="flex flex-items-center justify-center">
+        <div className="flex-grow"></div>
+        <div className="flex items-center justify-between">
           <Logo />
           <div className="mt-auto mb-auto text-size-xs text-red-700 font-bold">
             © 2024 Grimoire.
           </div>
         </div>
-      </div>{" "}
+      </div>
     </>
   );
 };
