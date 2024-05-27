@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const AboutPage = () => {
   return (
-    <div className="about-page bg-neutral-700">
+    <div className="about-page bg-black">
       <MainNav />
 
       <section className="hero flex flex-col justify-center items-center h-screen">
@@ -16,7 +16,7 @@ const AboutPage = () => {
           className="book-image justify-center h-20 w-20 pb-5"
         />
         <div className="hero-content w-full mx-auto max-w-screen-lg">
-          <h1 className="text-3xl font-bold text-white mb-4 text-center pb-10">
+          <h1 className="text-3xl font-bold text-red-700 mb-4 text-center pb-10">
             Unlock Your Potential Within Grimoire
           </h1>
           <p className="text-lg text-white mb-4 px-20 indent-16">
@@ -50,16 +50,16 @@ const AboutPage = () => {
       </section>
 
       <section className="benefits pb-5">
-        <h2 className="text-2xl font-bold text-white mb-4 text-center justify-center pb-20">
+        <h2 className="text-2xl font-bold text-red-700 mb-4 text-center justify-center pb-20">
           Benefits of Grimoire
         </h2>
         <div className="benefits-grid grid grid-cols-1 md:grid-cols-2 gap-x-48 gap-y-10 px-20 ml-10 mb-10">
           <div className="benefit">
             <i className="fas fa-check-circle text-white text-3xl mb-2"></i>
-            <h3 className="text-lg font-medium text-white mb-2">
+            <h3 className="text-lg font-medium text-red-700 mb-2">
               Increased Magical Engagement
             </h3>
-            <p className="text-base text-gray-400">
+            <p className="text-base text-white">
               Engaging scholarly knowledge and exercises keep you motivated and
               improve your magical affinity. The knowledge and skills gained
               prepare you for greater arcane feats.
@@ -67,10 +67,10 @@ const AboutPage = () => {
           </div>
           <div className="benefit">
             <i className="fas fa-chart-line text-white text-3xl mb-2"></i>
-            <h3 className="text-lg font-medium text-white mb-2">
+            <h3 className="text-lg font-medium text-red-700 mb-2">
               Improved Arcane Mastery
             </h3>
-            <p className="text-base text-gray-400">
+            <p className="text-base text-white">
               Track your progress and personalize your magical studies for
               greater mastery. Gain insights into your strengths and weaknesses
               through self-reflection and guidance from fellow magic users.
@@ -78,10 +78,10 @@ const AboutPage = () => {
           </div>
           <div className="benefit">
             <i className="fas fa-users text-white text-3xl mb-2"></i>
-            <h3 className="text-lg font-medium text-white mb-2">
+            <h3 className="text-lg font-medium text-red-700 mb-2">
               Streamlined Spellcasting Knowledge
             </h3>
-            <p className="text-base text-gray-400">
+            <p className="text-base text-white">
               Say goodbye to cumbersome spellbook organization. Grimoire
               empowers you to manage your spells, casting, and resources
               efficiently. With intuitive tools for knowledge organization and
@@ -92,7 +92,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <p className="text-sm text-gray-400 text-center mb-4">
+      <p className="text-sm text-red-700 text-center mb-4">
         Contact us to learn more about how our Grimoire can empower your magical
         journey. (+63) 91234567891
       </p>
