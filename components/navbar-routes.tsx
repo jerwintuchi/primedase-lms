@@ -36,8 +36,8 @@ const NavbarRoutes = () => {
             <Button
               size="sm"
               variant="ghost"
-              className="text-purple-900 bg-purple-400 
-                    hover:bg-purple-400/20 hover:text-purple-700 border-indigo-900 size-auto">
+              className="text-black bg-red-500 
+                    hover:bg-white hover:text-white-300 border-red-900 size-auto">
               Teacher Mode
             </Button>
           </Link>

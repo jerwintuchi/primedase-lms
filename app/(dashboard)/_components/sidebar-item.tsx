@@ -24,21 +24,21 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
       onClick={onClick}
       type="button"
       className={cn(
-        "flex items-center gap-x-2 text-purple-900 text-sm font-semibold pl-6 transition-all hover:text-black-600 hover:bg-purple-300",
+        "flex items-center gap-x-2 text-red-700 text-sm font-semibold pl-6 transition-all hover:text-black-600 hover:bg-red-300",
         isActive &&
-          "text-purple-900 bg-purple-200 hover:bg-purple-200 hover:text-purple-700 border-l-8 border-purple-900" // Add transition class here
+          "text-red-900 bg-red-200 hover:bg-red-200 hover:text-red-700 border-l-8 border-red-900" // Add transition class here
       )}>
       <div className="flex items-center gap-x-2 py-4">
         <Icon
           size={22}
-          className={cn("text-purple-800", isActive && "text-purple-800")}
+          className={cn("text-red-800", isActive && "text-red-800")}
         />
         {label}
       </div>
       <div
         className={cn(
           "ml-auto h-full transition-all", // Remove opacity manipulation
-          isActive && "border-purple-500 " // Add border on active state
+          isActive && "border-red-500 " // Add border on active state
         )}
       />
     </button>

@@ -1,12 +1,13 @@
 import Image from "next/image";
 
 export const Logo = () => {
-    return (
-        <Image
-        height={130}
-        width={130}
-        priority={false}
-        alt="logo"
-        src="/primedase.svg"/>
-    )
-}
+  return (
+    <Image
+      height={100}
+      width={100}
+      priority={false}
+      alt="logo"
+      src="/grimoire-icon-white(small).svg"
+    />
+  );
+};
