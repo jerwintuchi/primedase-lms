@@ -58,10 +58,10 @@ const CreatePage = () => {
       <div>
         <h1
           style={{ fontWeight: "bold", fontSize: "1.5em" }}
-          className="text-purple-500">
+          className="text-red-500">
           Name the course
         </h1>
-        <p>What should be the name of your course?</p>
+        <p className="text-gray-500">What should be the name of your course?</p>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -71,22 +71,20 @@ const CreatePage = () => {
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-purple-800">
-                    Course Title
-                  </FormLabel>
+                  <FormLabel className="text-red-700">Course Title</FormLabel>
                   <FormControl>
                     <Input
                       className="border border-gray-300 px-3 py-2
-                                         hover:border-purple-500 text-purple-600
-                                         focus:border-purple-800
+                                         hover:border-red-500 text-red-600
+                                         focus:border-red-800
                                          focus:border-2
-                                         placeholder-purple-400"
+                                         placeholder-red-400"
                       disabled={isSubmitting}
                       placeholder="like 'Quantum Physics' , 'Game Development'"
                       {...field}
                     />
                   </FormControl>
-                  <FormDescription className="text-purple-500">
+                  <FormDescription className="text-red-500">
                     What topic will you teach?
                   </FormDescription>
                   <FormMessage />
@@ -104,7 +102,7 @@ const CreatePage = () => {
               <Button
                 type="submit"
                 disabled={!isValid || isSubmitting}
-                className="text-black bg-purple-500 hover:bg-purple-800 hover:text-white size-auto">
+                className="text-black bg-green-500 hover:bg-green-700 hover:text-white size-auto">
                 Continue
               </Button>
             </div>

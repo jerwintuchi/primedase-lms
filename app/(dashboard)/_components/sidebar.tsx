@@ -4,8 +4,10 @@ import { SidebarRoutes } from "./sidebar-routes";
 const Sidebar = () => {
   return (
     <>
-      <div className="h-full border-r flex flex-col overflow-y-auto bg-white shadow-sm">
-        <div className="p-4">Your Rank is (chuchuchu)</div>
+      <div className="h-full flex border-r-2 border-red-800 flex-col overflow-y-auto bg-white shadow-sm">
+        <div className="p-4 text-black border-radius-3xl">
+          Your Rank is (chuchuchu)
+        </div>
         <div className="flex flex-col w-full">
           <SidebarRoutes />
         </div>

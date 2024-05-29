@@ -7,7 +7,7 @@ export const Logo = () => {
       width={100}
       priority={false}
       alt="logo"
-      src="/grimoire-icon-white(small).svg"
+      src="/grimoire-icon-white(small).png"
     />
   );
 };
