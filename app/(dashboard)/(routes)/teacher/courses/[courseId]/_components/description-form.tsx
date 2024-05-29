@@ -64,13 +64,13 @@ export const DescriptionForm = ({
   };
 
   return (
-    <div className="mt-6 border bg-yellow-300 rounded-md p-4">
-      <div className="drop-shadow-lg text-purple-700 font-medium flex items-center justify-between">
+    <div className="mt-6 border bg-red-500 rounded-md p-4">
+      <div className="drop-shadow-lg text-white font-medium flex items-center justify-between">
         Course Description
         <Button
           onClick={toggleEdit}
           variant="outline"
-          className="bg-purple-400 hover:bg-purple-300">
+          className="bg-red-400 hover:bg-red-300">
           {isEditing ? (
             <>Cancel</>
           ) : (
@@ -85,7 +85,7 @@ export const DescriptionForm = ({
         <p
           className={cn(
             "text-sm mt-2",
-            !initialData.description && "text-slate-500 italic"
+            !initialData.description && "text-black italic"
           )}>
           {initialData.description || "No Description yet."}
         </p>
@@ -101,7 +101,7 @@ export const DescriptionForm = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Label htmlFor="label" className="text-purple-700">
+                    <Label htmlFor="label" className="text-gray-600">
                       Description
                       <Textarea
                         style={{ height: "150px" }}
@@ -109,7 +109,7 @@ export const DescriptionForm = ({
                         disabled={isSubmitting}
                         placeholder="Add a description&nbsp;"
                         {...field}
-                        className="border border-purple-700 px-3 py-3 text-purple-700"
+                        className="border border-red-700 px-3 py-4 text-red-700"
                       />
                     </Label>
                   </FormControl>

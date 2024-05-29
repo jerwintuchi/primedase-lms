@@ -60,13 +60,13 @@ export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
   };
 
   return (
-    <div className="mt-6 border bg-yellow-300 rounded-md p-4">
-      <div className="drop-shadow-lg text-purple-700 font-medium flex items-center justify-between">
+    <div className="mt-6 border bg-red-500 rounded-md p-4">
+      <div className="drop-shadow-lg text-white font-medium flex items-center justify-between">
         Course Title
         <Button
           onClick={toggleEdit}
           variant="outline"
-          className="bg-purple-400 hover:bg-purple-300">
+          className="bg-red-400 hover:bg-red-300">
           {isEditing ? (
             <>Cancel</>
           ) : (
@@ -78,7 +78,7 @@ export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
         </Button>
       </div>
       {!isEditing && (
-        <p className="text-sm-2 text-purple-900 ">"{initialData.title}"</p>
+        <p className="text-sm-2 text-white ">"{initialData.title}"</p>
       )}
       {isEditing && (
         <Form {...form}>
@@ -95,7 +95,7 @@ export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
                       disabled={isSubmitting}
                       placeholder="like 'Quantum Physics' or 'Web Development'"
                       {...field}
-                      className="border border-purple-700 px-3 py-2 text-purple-700"
+                      className="border border-red-700 px-3 py-2 text-red-700"
                     />
                   </FormControl>
                   <FormMessage className="text-red-500 drop-shadow-sm" />
