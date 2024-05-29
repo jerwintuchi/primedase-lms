@@ -1,14 +1,23 @@
 "use client";
-import { BarChart2Icon, Layout, List, ListCollapse, ListFilter, ListXIcon, LucideIcon, Search, TableProperties } from "lucide-react";
+import {
+  BarChart2Icon,
+  Layout,
+  List,
+  ListCollapse,
+  ListFilter,
+  ListXIcon,
+  LucideIcon,
+  Search,
+  TableProperties,
+} from "lucide-react";
 import { SidebarItem } from "./sidebar-item";
 import { usePathname } from "next/navigation";
 
 export interface SidebarItemProps {
-  icon: LucideIcon; 
+  icon: LucideIcon;
   label: string;
   href: string;
 }
-
 
 const guestRoutes = [
   {
@@ -25,7 +34,7 @@ const guestRoutes = [
 
 const teacherRoutes = [
   {
-    Icon: TableProperties, // Teacher Icon Courses 
+    Icon: TableProperties, // Teacher Icon Courses
     label: "Courses",
     href: "/teacher/courses",
   },
@@ -54,5 +63,5 @@ export const SidebarRoutes = () => {
         />
       ))}
     </div>
-  )
-}
+  );
+};

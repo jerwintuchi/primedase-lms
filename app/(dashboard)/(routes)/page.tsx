@@ -11,7 +11,8 @@ export default async function TeacherDashBoard(role: Roles) {
   //   // Redirect to root for teacher or publicMetadata.role === "teacher"
   //   return redirect("/");
   // } else
-  if (checkRole("student") && user) {
+  if (role === "student" && user) {
+    //from checkRole("student") to role
     return redirect("/student");
   }
 

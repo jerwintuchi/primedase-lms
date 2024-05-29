@@ -11,7 +11,7 @@ export default clerkMiddleware(
       auth().protect();
       if (role === "teacher") {
         console.log("role is ", role);
-        // auth().protect();
+        auth().protect();
         // return NextResponse.redirect(new URL("/teacher", req.url));
       }
       if (role === "student" && isTeacherRoute(req)) {
