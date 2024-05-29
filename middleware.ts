@@ -38,6 +38,7 @@ export const config = {
     "/sign-in(.*)",
     "/teacher-sign-up(.*)",
     "/sign-up(.*)",
+    "/teacher-sign-in(.*)",
     "/landing(.*)",
     "/about",
     "/unauthorized",
