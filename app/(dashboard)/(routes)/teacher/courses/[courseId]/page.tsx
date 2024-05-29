@@ -45,7 +45,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const completionText = `(${completedFields} out of ${totalFields})`;
 
   return (
-    <div className="p-6">
+    <div className="p-6 grow">
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-y-2">
           <h1 className="text-2xl font-medium text-purple-700">
