@@ -20,8 +20,8 @@ export default clerkMiddleware(
         return NextResponse.redirect(new URL("/student", req.url));
       }
     }
-  },
-  { debug: true }
+  }
+  //{ debug: true }
 );
 
 const isTeacherRoute = createRouteMatcher(["/teacher(.*)"]);
