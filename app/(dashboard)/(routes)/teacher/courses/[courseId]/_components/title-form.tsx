@@ -66,7 +66,7 @@ export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
         <Button
           onClick={toggleEdit}
           variant="outline"
-          className="bg-red-400 hover:bg-red-300">
+          className="bg-red-500 hover:bg-red-300">
           {isEditing ? (
             <>Cancel</>
           ) : (

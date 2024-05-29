@@ -67,7 +67,7 @@ export const CategoryForm = ({
         <Button
           onClick={toggleEdit}
           variant="outline"
-          className="bg-red-400 hover:bg-red-300">
+          className="bg-red-600 hover:bg-red-300">
           {isEditing ? (
             <>Cancel</>
           ) : (
