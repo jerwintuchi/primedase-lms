@@ -61,13 +61,13 @@ export const CategoryForm = ({
     (option) => option.value === initialData.categoryId
   );
   return (
-    <div className="mt-6 border bg-yellow-300 rounded-md p-4">
-      <div className="drop-shadow-lg text-purple-700 font-medium flex items-center justify-between">
+    <div className="mt-6 border bg-red-600 rounded-md p-4">
+      <div className="drop-shadow-lg text-white font-medium flex items-center justify-between">
         Course Category
         <Button
           onClick={toggleEdit}
           variant="outline"
-          className="bg-purple-400 hover:bg-purple-300">
+          className="bg-red-400 hover:bg-red-300">
           {isEditing ? (
             <>Cancel</>
           ) : (
@@ -81,7 +81,7 @@ export const CategoryForm = ({
       {!isEditing && (
         <p
           className={cn(
-            "text-sm mt-2 text-purple-700 border-purple-900 border-2 rounded-full p-1 inline-block font-medium",
+            "text-sm mt-2 text-white border-white border-2 rounded-full px-2 py-1 inline-block font-medium",
             !initialData.categoryId && "text-slate-500 italic"
           )}>
           {selectedOption?.label || "No Category yet."}
@@ -98,9 +98,9 @@ export const CategoryForm = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Label htmlFor="label" className="text-purple-700">
+                    <Label htmlFor="label" className="text-white">
                       Category of magic
-                      <div className="pt-2">
+                      <div className="pt-2 bg-red-600">
                         <Combobox options={options} {...field} />
                       </div>
                     </Label>

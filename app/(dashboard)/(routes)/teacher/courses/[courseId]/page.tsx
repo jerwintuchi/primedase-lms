@@ -48,17 +48,15 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
     <div className="p-6 grow">
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-y-2">
-          <h1 className="text-2xl font-medium text-purple-700">
-            Course Creation
-          </h1>
-          <span className="text-sm text-purple-500">
+          <h1 className="text-2xl font-medium text-red-700">Course Creation</h1>
+          <span className="text-sm text-red-500">
             Complete all fields to publish your course {completionText}
           </span>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
         <div>
-          <div className="flex items-center gap-x-2 text-purple-500">
+          <div className="flex items-center gap-x-2 text-red-500">
             <IconBadge icon={LayoutDashboard} />
             <h2>Describe your Course</h2>
           </div>

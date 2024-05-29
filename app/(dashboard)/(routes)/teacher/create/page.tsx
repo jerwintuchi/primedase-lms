@@ -76,8 +76,8 @@ const CreatePage = () => {
                     <Input
                       className="border border-gray-300 px-3 py-2
                                          hover:border-red-500 text-red-600
-                                         focus:border-red-800
-                                         focus:border-2
+                                         focus:border-red-blue-500
+                                         focus:outline-none !important
                                          placeholder-red-400"
                       disabled={isSubmitting}
                       placeholder="like 'Quantum Physics' , 'Game Development'"

@@ -7,10 +7,11 @@ import { redirect } from "next/navigation";
 export default async function TeacherDashBoard(role: Roles) {
   const user = await currentUser();
 
-  if (checkRole("teacher") && user) {
-    // Redirect to root for teacher or publicMetadata.role === "teacher"
-    return redirect("/");
-  } else if (checkRole("student") && user) {
+  // if (checkRole("teacher") && user) {
+  //   // Redirect to root for teacher or publicMetadata.role === "teacher"
+  //   return redirect("/");
+  // } else
+  if (checkRole("student") && user) {
     return redirect("/student");
   }
 

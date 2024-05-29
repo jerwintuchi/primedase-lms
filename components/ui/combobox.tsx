@@ -30,12 +30,12 @@ export const Combobox = ({ options, value, onChange }: ComboboxProps) => {
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild className="bg-purple-300 hover:bg-purple-400">
+      <PopoverTrigger asChild className="bg-red-500 hover:bg-red-600">
         <Button
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className=" hover:bg-purple-400 w-[200px] justify-between rounded px-2 py-1 text-left focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 ">
+          className=" hover:bg-red-500 w-[200px] justify-between rounded px-2 py-1 text-left focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 ">
           {value
             ? options.find((option) => option.value === value)?.label
             : "Select Option..."}
@@ -43,11 +43,11 @@ export const Combobox = ({ options, value, onChange }: ComboboxProps) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0 ">
-        <Command className="bg-purple-400">
+        <Command className="bg-red-500">
           <CommandInput placeholder="Search Magic..." className="h-9" />
           <CommandList>
             <CommandEmpty>No Option found.</CommandEmpty>
-            <CommandGroup className="hover:bg-purple-500 hover:text-black text-purple-900">
+            <CommandGroup className="hover:bg-red-500 hover:text-black">
               {options.map((option) => (
                 <CommandItem
                   key={option.value}
