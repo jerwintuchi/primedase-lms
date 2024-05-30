@@ -92,7 +92,7 @@ const CreatePage = () => {
               )}
             />
             <div className="flex items-cetner gap-x-2">
-              <Link href={"/"}>
+              <Link href={"/teacher/courses"}>
                 <Button
                   type="button"
                   className="text-white bg-red-500 hover:bg-red-800 hover:text-white size-auto">
