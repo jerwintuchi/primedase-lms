@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import { isTeacher } from "./lib/teacher";
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import {
+  clerkMiddleware,
+  createRouteMatcher,
+  getAuth,
+} from "@clerk/nextjs/server";
 
 export default clerkMiddleware(
   (auth, req) => {
@@ -9,13 +13,15 @@ export default clerkMiddleware(
 
     if (isProtectedRoute(req)) {
       auth().protect();
+      if (role === "teacher") {
+        console.log("role is ", role);
+        auth().protect();
+        return NextResponse.redirect(new URL("/", req.url));
+      }
       if (role === "student") {
         console.log("role is ", role);
         auth().protect();
         return NextResponse.redirect(new URL("/unauthorized", req.url));
-      } else {
-        console.log("role is ", role);
-        return NextResponse.redirect(new URL("/", req.url));
       }
     }
   }
