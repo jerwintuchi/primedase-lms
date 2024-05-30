@@ -13,15 +13,10 @@ export default clerkMiddleware(
 
     if (isProtectedRoute(req)) {
       auth().protect();
+
       if (role) {
-        if (role === "teacher") {
-          console.log("role is ", role);
-          auth().protect();
-          return NextResponse.redirect(new URL("/", req.url));
-        }
-        if (role === "student") {
-          console.log("role is ", role);
-          auth().protect();
+        console.log("User is ", role);
+        if (role === "student" || role === null) {
           return NextResponse.redirect(new URL("/unauthorized", req.url));
         }
       }
@@ -29,8 +24,6 @@ export default clerkMiddleware(
   }
   //{ debug: true }
 );
-
-const isTeacherRoute = createRouteMatcher(["/teacher(.*)"]);
 
 const isProtectedRoute = createRouteMatcher([
   "/",
