@@ -13,15 +13,17 @@ export default clerkMiddleware(
 
     if (isProtectedRoute(req)) {
       auth().protect();
-      if (role === "teacher") {
-        console.log("role is ", role);
-        auth().protect();
-        return NextResponse.redirect(new URL("/", req.url));
-      }
-      if (role === "student") {
-        console.log("role is ", role);
-        auth().protect();
-        return NextResponse.redirect(new URL("/unauthorized", req.url));
+      if (role) {
+        if (role === "teacher") {
+          console.log("role is ", role);
+          auth().protect();
+          return NextResponse.redirect(new URL("/", req.url));
+        }
+        if (role === "student") {
+          console.log("role is ", role);
+          auth().protect();
+          return NextResponse.redirect(new URL("/unauthorized", req.url));
+        }
       }
     }
   }
