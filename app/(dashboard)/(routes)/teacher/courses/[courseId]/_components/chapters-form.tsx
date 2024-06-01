@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import { ListPlus, Pen } from "lucide-react";
+import { ListPlus, Loader2, Pen } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -76,7 +76,13 @@ export const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
   };
 
   return (
-    <div className="mt-6 border bg-red-500 rounded-md p-4">
+    <div className="relative mt-6 border bg-red-500 rounded-md p-4">
+      {isUpdating && (
+        <div className="absolute h-full w-full text-white bg-gray-500/20 top-0 right-0 rounded-md flex items-center justify-center">
+          Reordering...
+          <Loader2 className="h-6 w-6 animate-spin text-white" />
+        </div>
+      )}
       <div className="drop-shadow-lg text-white font-medium flex items-center justify-between">
         Course Chapters
         <Button
