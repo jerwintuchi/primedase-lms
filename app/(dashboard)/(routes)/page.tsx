@@ -13,7 +13,7 @@ export default async function TeacherDashBoard(role: Roles) {
   // } else
   if (role === "student" && user) {
     //from checkRole("student") to role
-    return redirect("/student");
+    return redirect("/unauthorized");
   }
 
   if (!user) {
