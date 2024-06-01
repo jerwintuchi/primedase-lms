@@ -2,9 +2,13 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import Link from "next/link";
-import { ArrowLeftIcon, LucideLayoutDashboard } from "lucide-react";
+import { ArrowLeftIcon, Eye, LucideLayoutDashboard } from "lucide-react";
 import { IconBadge } from "@/components/ui/icon-badge";
+
 import ChapterTitleForm from "./_components/chapter-title-form";
+import ChapterDescriptionForm from "./_components/chapter-description-form";
+import ChapterAccessForm from "./_components/chapter-access-form";
+import ChapterVisibility from "./_components/chapter-visibility-component";
 
 const chapterIdPage = async ({
   params,
@@ -53,6 +57,13 @@ const chapterIdPage = async ({
               <span className="text-sm text-gray-500">
                 Completed {completionText} fields
               </span>
+              <div>
+                <ChapterVisibility
+                  initialData={chapter}
+                  courseId={params.courseId}
+                  chapterId={params.chapterId}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -64,6 +75,11 @@ const chapterIdPage = async ({
             <h2 className="text-xl">Customize Chapter</h2>
           </div>
           <ChapterTitleForm
+            initialData={chapter}
+            courseId={params.courseId}
+            chapterId={params.chapterId}
+          />
+          <ChapterDescriptionForm
             initialData={chapter}
             courseId={params.courseId}
             chapterId={params.chapterId}
