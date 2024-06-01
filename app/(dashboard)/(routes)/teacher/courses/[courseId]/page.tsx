@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 
 import {
   CircleDollarSign,
+  File,
   LayoutDashboard,
   ListChecks,
   ListCollapseIcon,
@@ -15,6 +16,8 @@ import DescriptionForm from "./_components/description-form";
 import { ImageForm } from "./_components/image-form";
 import CategoryForm from "./_components/category-form";
 import PriceForm from "./_components/price-form";
+import AttachmentForm from "./_components/attachment-form";
+import ChaptersForm from "./_components/chapters-form";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth();
@@ -25,6 +28,19 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const course = await db.course.findUnique({
     where: {
       id: params.courseId,
+      userId,
+    },
+    include: {
+      chapters: {
+        orderBy: {
+          position: "asc",
+        },
+      },
+      attachments: {
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
     },
   });
 
@@ -44,6 +60,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
     course.imageUrl,
     course.price,
     course.categoryId,
+    course.chapters.some((chapter) => chapter.isPublished),
   ];
   const totalFields = requiredFields.length; //get number of all required fields
   const completedFields = requiredFields.filter(Boolean).length;
@@ -84,13 +101,20 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
               <IconBadge icon={ListChecks} />
               <h2 className="text-red-500 text-xl">Course Chapters</h2>
             </div>
-            <div>NOTE: GAWIN ANG CHAPTERS!!</div>
+            <ChaptersForm initialData={course} courseId={course.id} />
           </div>
           <div className="flex items-center gap-x-2 text-yellow-500">
             <IconBadge icon={CircleDollarSign} />
             <h2 className="text-red-500 text-xl">Course Pricing</h2>
           </div>
           <PriceForm initialData={course} courseId={course.id} />
+          <div>
+            <div className="flex items-center gap-x-2 text-yellow-500">
+              <IconBadge icon={File} />
+              <h2 className="text-red-500 text-xl">File Attachments</h2>
+            </div>
+            <AttachmentForm initialData={course} courseId={course.id} />
+          </div>
         </div>
       </div>
     </div>
