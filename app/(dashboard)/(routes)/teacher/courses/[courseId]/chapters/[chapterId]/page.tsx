@@ -10,6 +10,7 @@ import ChapterDescriptionForm from "./_components/chapter-description-form";
 import ChapterVisibility from "./_components/chapter-visibility-component";
 import ChapterVideoForm from "./_components/chapter-video-form";
 import Banner from "@/components/banner";
+import toast from "react-hot-toast";
 
 const chapterIdPage = async ({
   params,
@@ -40,6 +41,9 @@ const chapterIdPage = async ({
   const completedFields = requiredFields.filter(Boolean).length;
 
   const completionText = `${completedFields} out of ${totalFields}`;
+  if (completionText === "3 out of 3") {
+    toast.success("All fields are completed. You can now publish the chapter.");
+  }
   return (
     <div className="w-full mb-4">
       {!chapter.isPublished && (

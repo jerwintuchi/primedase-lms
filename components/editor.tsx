@@ -15,7 +15,7 @@ export const Editor = ({ onChange, value }: EditorProps) => {
     []
   );
   return (
-    <div className="bg-white">
+    <div className="bg-red-500">
       <ReactQuill theme="snow" value={value} onChange={onChange} />
     </div>
   );
