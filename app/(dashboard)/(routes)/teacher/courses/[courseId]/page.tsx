@@ -65,15 +65,23 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const totalFields = requiredFields.length; //get number of all required fields
   const completedFields = requiredFields.filter(Boolean).length;
 
-  const completionText = `(${completedFields} out of ${totalFields})`;
-
+  const completionText = `${completedFields} out of ${totalFields}`;
+  const isCompleted = completedFields === totalFields;
   return (
     <div className="p-6 grow">
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-y-2">
           <h1 className="text-2xl font-medium text-red-700">Course Creation</h1>
           <span className="text-sm text-red-500">
-            Complete all fields to publish your course {completionText}
+            {isCompleted ? (
+              <span className="text-sm text-green-500 font-bold">
+                ✔ Completed {completionText} fields
+              </span>
+            ) : (
+              <span className="text-sm text-gray-500">
+                Complete {completionText} fields to publish your Course
+              </span>
+            )}
           </span>
         </div>
       </div>

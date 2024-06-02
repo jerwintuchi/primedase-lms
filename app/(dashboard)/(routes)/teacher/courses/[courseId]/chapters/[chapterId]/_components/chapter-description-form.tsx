@@ -104,8 +104,8 @@ export const ChapterDescriptionForm = ({
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormControl className="text-black">
-                    <Editor editorStyle={{ color: "black" }} {...field} />
+                  <FormControl>
+                    <Editor {...field} />
                   </FormControl>
                   <FormMessage className="text-red-500 drop-shadow-sm" />
                 </FormItem>

@@ -41,9 +41,7 @@ const chapterIdPage = async ({
   const completedFields = requiredFields.filter(Boolean).length;
 
   const completionText = `${completedFields} out of ${totalFields}`;
-  if (completionText === "3 out of 3") {
-    toast.success("All fields are completed. You can now publish the chapter.");
-  }
+  const isCompleted = completedFields === totalFields;
   return (
     <div className="w-full mb-4">
       {!chapter.isPublished && (
@@ -66,9 +64,15 @@ const chapterIdPage = async ({
                 <h1 className="text-2xl font-medium text-red-700">
                   Chapter Creation
                 </h1>
-                <span className="text-sm text-gray-500">
-                  Completed {completionText} fields
-                </span>
+                {isCompleted ? (
+                  <span className="text-sm text-green-500 font-bold">
+                    ✔ Completed {completionText} fields
+                  </span>
+                ) : (
+                  <span className="text-sm text-gray-500">
+                    Completed {completionText} fields
+                  </span>
+                )}
                 <div>
                   <ChapterVisibility
                     initialData={chapter}
