@@ -11,6 +11,7 @@ import ChapterVisibility from "./_components/chapter-visibility-component";
 import ChapterVideoForm from "./_components/chapter-video-form";
 import Banner from "@/components/banner";
 import toast from "react-hot-toast";
+import { ChapterActions } from "./_components/chapter-actions";
 
 const chapterIdPage = async ({
   params,
@@ -41,7 +42,7 @@ const chapterIdPage = async ({
   const completedFields = requiredFields.filter(Boolean).length;
 
   const completionText = `${completedFields} out of ${totalFields}`;
-  const isCompleted = completedFields === totalFields;
+  const isCompleted = requiredFields.every(Boolean);
   return (
     <div className="w-full mb-4">
       {!chapter.isPublished && (
@@ -73,14 +74,20 @@ const chapterIdPage = async ({
                     Completed {completionText} fields
                   </span>
                 )}
-                <div>
-                  <ChapterVisibility
-                    initialData={chapter}
-                    courseId={params.courseId}
-                    chapterId={params.chapterId}
-                  />
-                </div>
               </div>
+              <ChapterVisibility
+                initialData={chapter}
+                courseId={params.courseId}
+                chapterId={params.chapterId}
+              />
+            </div>
+            <div className="flex justify-end pt-2">
+              <ChapterActions
+                disabled={!isCompleted}
+                courseId={params.courseId}
+                chapterId={params.chapterId}
+                isPublished={chapter.isPublished}
+              />
             </div>
           </div>
         </div>
