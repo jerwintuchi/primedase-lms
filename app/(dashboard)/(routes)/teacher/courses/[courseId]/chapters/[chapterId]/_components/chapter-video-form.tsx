@@ -1,7 +1,7 @@
 "use client";
 import * as z from "zod";
 import axios from "axios";
-
+import MuxPlayer from "@mux/mux-player-react";
 import { Button } from "@/components/ui/button";
 import { Pen, PlusIcon, VideoIcon } from "lucide-react";
 import { useState } from "react";
@@ -67,7 +67,7 @@ export const ChapterVideoForm = ({
           {!isEditing && initialData.videoUrl && (
             <>
               <Pen className="h-4 w-4 mr-2"></Pen>
-              Edit Video
+              Upload New Video
             </>
           )}
         </Button>
@@ -79,7 +79,7 @@ export const ChapterVideoForm = ({
           </div>
         ) : (
           <div className="relative aspect-video mt-2 text text-white">
-            Video successfullly uploaded!
+            <MuxPlayer playbackId={initialData?.muxData?.playbackId || ""} />
           </div>
         ))}
       {isEditing && (
