@@ -87,7 +87,7 @@ export const ChapterVisibility = ({
                     </div>
                   ) : (
                     <div className="text-gray-500">
-                      This Chapter is not visible to preview
+                      This Chapter is not visible for preview
                     </div>
                   )}
                 </div>

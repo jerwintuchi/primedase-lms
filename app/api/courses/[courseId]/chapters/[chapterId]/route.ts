@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
-
+import Mux from "@mux/mux-node";
 export async function PATCH(
   req: Request,
   { params }: { params: { courseId: string; chapterId: string } }
@@ -34,8 +34,12 @@ export async function PATCH(
         ...values,
       },
     });
-    //TODO: HANDLE VIDEO UPLOAD
 
+    //TODO: HANDLE VIDEO UPLOAD
+    const { Video } = new Mux(
+      process.env.MUX_TOKEN_ID!,
+      process.env.MUX_TOKEN_SECRET!
+    );
     return NextResponse.json(chapter);
   } catch (error) {
     console.log("[COURSES_CHAPTER_ID", error);

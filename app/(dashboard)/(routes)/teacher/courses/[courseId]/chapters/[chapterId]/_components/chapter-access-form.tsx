@@ -116,7 +116,7 @@ export const ChapterAccessForm = ({
                   <div className="space-y-1 leadning-non">
                     <FormDescription className="text-white">
                       Tick this box if you want this chapter visible
-                    </FormDescription>
+                    </FormDescription>{" "}
                   </div>
                 </FormItem>
               )}
