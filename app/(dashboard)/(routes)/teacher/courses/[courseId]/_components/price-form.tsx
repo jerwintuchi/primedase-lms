@@ -75,7 +75,7 @@ export const PriceForm = ({ initialData, courseId }: PriceFormProps) => {
       {!isEditing && (
         <p
           className={cn(
-            "text-sm mt-2 text-green-500",
+            "text-sm mt-2 text-white",
             !initialData.price && "text-black italic"
           )}>
           {initialData.price ? formatPrice(initialData.price) : "Free"}
