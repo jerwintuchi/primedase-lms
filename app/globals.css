@@ -7,6 +7,63 @@ body,
   height: 100%;
 }
 
+.noto-sans-runic-regular {
+  font-family: "Noto Sans Runic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.animateText {
+  animation: runeScroll 4s linear infinite; /* Animation properties */
+}
+.rune-container h2 {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  line-height: 1; /* Adjust line-height if needed */
+}
+
+section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section .row {
+  position: relative ;
+  width: 100%;
+  display: flex;
+  padding: 10px 0;
+  white-space: normal;
+}
+
+
+@keyframes runeScroll {
+  0% {
+    transform: translateY(0); /* Start from top */
+  }
+  /* Add multiple keyframes for intermediate positions */
+  25% {
+    transform: translateY(-25vh); /* Move runes down 25% viewport height */
+  }
+  50% {
+    transform: translateY(-50vh); /* Move runes down 50% viewport height */
+  }
+  75% {
+    transform: translateY(-75vh); /* Move runes down 75% viewport height */
+  }
+  100% {
+    transform: translateY(-100vh); /* Move runes to bottom */
+  }
+  /* "Reset" keyframe to create continuous loop */
+  101% {
+    transform: translateY(0); /* Move runes back to top (off-screen) */
+  }
+}
 
 /* BACKGROUND FOR THE LANDING PAGE*/
 body {
